@@ -7,9 +7,12 @@ Models for photoblog application
 from PIL import Image
 from datetime import datetime
 # Django
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
+# Thumbnail
+from djDentonPhotoblog.photoblog.thumbs import ImageWithThumbsField
 
 class Category(models.Model):
     """
@@ -44,7 +47,7 @@ class Photo(models.Model):
     title = models.CharField(_(u'Titre'), max_length=255)
     slug = models.SlugField(_(u'URI'), max_length=255, unique=True)
     summary = models.TextField(_(u'Description'), null=True, blank=True)
-    file = models.ImageField(_(u'Fichier'), upload_to='photos', height_field='file_height', width_field='file_width')
+    file = ImageWithThumbsField(_(u'Fichier'), upload_to='photos', height_field='file_height', width_field='file_width', sizes=((125,125),(200,200), (920, 760)))
     file_width = models.IntegerField(_(u'Largeur'), null=True, blank=True)
     file_height = models.IntegerField(_(u'Hauteur'), null=True, blank=True)
     created_at = models.DateTimeField(_(u'Date de création'), auto_now_add=True)
@@ -53,10 +56,10 @@ class Photo(models.Model):
     
     def __unicode__(self):
         return self.title
-    
+        
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name)        
         super(Photo, self).save()
         
     class Meta:
