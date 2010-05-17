@@ -1,0 +1,21 @@
+{% extends "layout/base.html" %}
+{% block title %}Fiona Denton - archives{% endblock %}
+
+{% block content %}
+    {% regroup archives by category as photo_by_category %}
+    <ul>
+    {% for photos in photo_by_category %}
+        <li>{{ photos.grouper }}
+        <ul>
+            {% for photo in photos.list %}
+            <li>
+                <a href="{{ photo.get_absolute_url }}" title="{{ photo.title}}"><img src="{{ photo.file.url_200x200 }}" /></a>
+            </li>
+            {% endfor %}
+        </ul>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+

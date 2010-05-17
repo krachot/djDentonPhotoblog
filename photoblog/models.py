@@ -37,7 +37,12 @@ class Category(models.Model):
         ordering = ['name']
         verbose_name = _(u'Catégorie')
         verbose_name_plural = _(u'Catégories')
-        
+
+class PhotoManager(models.Manager):
+    
+    def get_query_set(self):
+        return super(PhotoManager, self).get_query_set().filter(is_published=True)
+     
 class Photo(models.Model):
     """
     A photo
@@ -47,12 +52,24 @@ class Photo(models.Model):
     title = models.CharField(_(u'Titre'), max_length=255)
     slug = models.SlugField(_(u'URI'), max_length=255, unique=True)
     summary = models.TextField(_(u'Description'), null=True, blank=True)
-    file = ImageWithThumbsField(_(u'Fichier'), upload_to='photos', height_field='file_height', width_field='file_width', sizes=((125,125),(200,200), (920, 760)))
+    file = ImageWithThumbsField(_(u'Fichier'), upload_to='photos',
+        height_field='file_height', width_field='file_width', sizes=((125,125),(200,200), (920, 760)))
     file_width = models.IntegerField(_(u'Largeur'), null=True, blank=True)
     file_height = models.IntegerField(_(u'Hauteur'), null=True, blank=True)
+    is_published = models.BooleanField(_(u'Publié?'), null=False, default=True)
     created_at = models.DateTimeField(_(u'Date de création'), auto_now_add=True)
     updated_at = models.DateTimeField(_(u'Date de modification'), auto_now=True)
     category = models.ForeignKey(Category, verbose_name=_(u'Catégorie'))
+    
+    objects = models.Manager()
+    public_objects = PhotoManager()
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('photoblog_photo', (), {
+            'category': self.category.slug,
+            'slug': self.slug,
+        })
     
     def __unicode__(self):
         return self.title

@@ -1,0 +1,244 @@
+@font-face {
+  font-family: 'Adellebasic';
+  src: local('Adellebasic'), url('fonts/adellebasic_bold-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: local('Lobster'), url('fonts/lobster_1.2-webfont.ttf') format('truetype');
+} 
+
+/**
+ * HTML5 reset CSS
+ */
+
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary {
+	display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #000;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/**
+ * General
+ */
+body {
+  background: #000;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+#wrapper {
+  position: relative;
+  width: 920px;
+  margin: 0 auto;
+}
+
+header, nav, footer, figure, section {
+  display: block;
+}
+
+header {
+  position: relative;
+}
+
+header h1 {
+  display: inline-block;
+  font-family: "Lobster", "Lucida Grande", Tahoma, "Trebuchet MS", Arial, Helvetica, FreeSans, sans-serif;
+  font-size: 48px;
+  margin-top: 10px;
+}
+
+header h1 a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0px 0px 5px #fff; 
+}
+
+header nav {
+  position: absolute;
+  right: 0;
+  top: 31px;
+  font: 0.8em "Adellebasic", "Lucida Grande",Tahoma, "Trebuchet MS", Arial, Helvetica, FreeSans, sans-serif;
+  text-transform: uppercase;
+}
+
+header nav a {
+  color: #eee;
+  text-decoration: none;
+  padding: 6px 12px;
+  margin: 0 2px;
+}
+
+header nav a:hover, header nav a:focus,
+header nav a#subscribe:hover, header nav a#subscribe:focus{
+  text-decoration: none;
+  background-color: rgba(255,255,255,0.1);
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+header nav a#subscribe {
+  padding-right: 26px;
+  background: transparent url(img/feed.png) 7.2em 5px no-repeat;
+}
+
+section {
+  position: relative;
+}
+
+section #photo {
+  position: relative;
+  margin-top: 8px;
+  width: 920px;
+}
+
+section #photo img {
+  border: solid 2px #fff;
+  margin: 0 auto;
+  display: block;
+}
+
+#photo.photo-nav .photo-nav-menu {
+  background-image:url("img/void.gif");
+  left:0;
+  position:absolute;
+  top:0;
+  z-index:10;
+}
+
+#photo.photo-nav a {
+  background:none repeat scroll 0 0 transparent;
+  display:block;
+  float:left;
+  width:49.9%;
+}
+
+#photo.photo-nav a.next {
+  float:right;
+}
+
+#photo.photo-nav a.prev:hover {
+  background: transparent url(img/photoprev.png) no-repeat 2px 50%;
+}
+
+#photo.photo-nav a.next:hover {
+  background: transparent url(img/photonext.png) no-repeat 100% 50%;
+}
+
+
+#nav {
+  margin:0 auto;
+  width:920px;
+  font-weight:bold;
+  margin-top:16px;
+  overflow:hidden;
+  padding-bottom:0.5em;
+}
+
+#nav li.previous {
+  float:left;
+  width:50%;
+}
+
+#nav li.next {
+  float:right;
+  text-align:right;
+  width:49%;
+}
+
+#nav li a {
+  color: #fff;
+  text-decoration: none;
+}

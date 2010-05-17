@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    {% block og %}{% endblock %}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css" />
+    
+    <link rel="alternate" title="Fiona Denton : Latest photos" type="application/atom+xml" href="{% url photoblog_latest_feed %}" />
+</head>
+<body>
+    <div id="wrapper">
+        <header role="banner">
+            <h1><a href="{% url photoblog_home %}">Fiona Denton</a></h1>
+            
+            <nav role="navigation">
+            <a href="{% url photoblog_home %}">Home</a>
+            <a href="{% url photoblog_archives %}">Archives</a>
+            <a href="/">Contact</a>
+            <a id="subscribe" href="{% url photoblog_latest_feed %}">Subscribe</a>
+            </nav>
+        </header>
+        
+        <section role="main">
+            {% block content %}{% endblock %}
+        </section>
+    </div>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    {% block extra_js %}{% endblock %}
+    <!--[if IE]>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/styles-ie.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/html5-ie.js"></script>
+    <![endif]-->
+</body>
+</html>

@@ -9,6 +9,8 @@ ADMINS = (
     ('Krachot', 'krachot@gmail.com'),
 )
 
+INTERNAL_IPS = ('127.0.0.1',)
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -45,6 +47,8 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
+NDD = 'http://fiona.denton.com'
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media/')
@@ -75,6 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'djDentonPhotoblog.urls'
@@ -90,5 +95,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'debug_toolbar',
     'djDentonPhotoblog.photoblog',
 )

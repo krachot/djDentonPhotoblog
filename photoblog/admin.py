@@ -20,13 +20,22 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('get_thumbnail_img_tag', 'title', 'category', 'created_at', 'updated_at',)
+    list_display = ('get_thumbnail_img_tag', 'title', 'category', 'is_published', 'created_at', 'updated_at',)
     search_fields = ('title', 'summary', 'category',)
     list_filter = ('category',)
     list_display_links = ('title',)
     date_hierarchy = 'created_at'
     save_on_top = True
     prepopulated_fields = {"slug": ("title",)}
+    fieldsets = (
+        ('Photo', {
+            'fields': ('category', 'title', 'file',)       
+        }),
+        ('Options avancées', {
+            'classes': ('collapse',),
+            'fields': ('summary', 'is_published', 'slug')
+        })
+    )
     
     def get_thumbnail_img_tag(self, obj):
         return u'<img src="%s" />' % obj.file.url_125x125

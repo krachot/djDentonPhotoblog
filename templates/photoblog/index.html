@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+{% block title %}Fiona Denton - portfolio{% endblock %}
+{% block og %}
+    <meta property="og:title" content="Fiona Denton - portfolio"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ ndd }}"/>
+    <meta property="og:image" content="{{ ndd }}{{ photo.file.url_200x200 }}"/>
+{% endblock %}
+
+{% block content %}
+    {% if photo %}
+            <div id="photo">
+                <img src="{{ photo.file.url_920x760 }}" />
+            </div>
+            
+            <h2>{{ photo.title }}</h2>
+            
+            <ul id="nav">
+                {% if prev %}
+                <li class="previous"><a href="{{ prev.get_absolute_url }}"
+                  title="Previous picture ({{ photo.created_at|date:"d M Y" }})">{{ prev.title }}</a></li>
+                {% endif %}
+            </ul>
+    {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+{% endblock %}

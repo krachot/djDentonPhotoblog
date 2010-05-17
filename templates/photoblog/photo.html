@@ -1,0 +1,37 @@
+{% extends "layout/base.html" %}
+{% block title %}Fiona Denton - {{ photo.title }}{% endblock %}
+{% block og %}
+    <meta property="og:title" content="Fiona Denton - {{ photo.title }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ ndd }}{{ photo.get_absolute_url }}"/>
+    <meta property="og:image" content="{{ ndd }}{{ photo.file.url_200x200 }}"/>
+{% endblock %}
+
+{% block content %}
+    {% if photo %}
+            <div id="photo">
+                <img src="{{ photo.file.url_920x760 }}" />
+            </div>
+            
+            <h2>{{ photo.title }}</h2>
+            
+            <!--<iframe src="http://www.facebook.com/widgets/like.php?href={{ ndd }}{{ photo.get_absolute_url }}"
+                scrolling="no" frameborder="0"
+                style="border:none; width:450px; height:80px"></iframe>-->
+
+            <ul id="nav">
+                {% if next %}
+                <li class="next"><a href="{{ next.get_absolute_url }}"
+                  title="Next picture ({{ next.created_at|date:"d M Y" }})">{{ next.title }}</a></li>
+                {% endif %}
+                {% if prev %}
+                <li class="previous"><a href="{{ prev.get_absolute_url }}"
+                  title="Previous picture ({{ prev.created_at|date:"d M Y" }})">{{ prev.title }}</a></li>
+                {% endif %}
+            </ul>
+    {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+{% endblock %}
