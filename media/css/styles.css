@@ -110,7 +110,7 @@ input, select {
  * General
  */
 body {
-  background: #000;
+  background: #000 url(img/bg.png) left top repeat;
   color: #fff;
 }
 

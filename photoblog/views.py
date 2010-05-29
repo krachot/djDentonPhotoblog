@@ -57,6 +57,6 @@ def photo(request, category=None, slug=None, template_name='photoblog/photo.html
 
 def archives(request, template_name='photoblog/archives.html'):
     data = {
-        'archives': Photo.public_objects.order_by('category__name', 'created_at').all(),
+        'archives': Photo.public_objects.select_related().order_by('category__name', 'created_at').all(),
     }
     return render_to_response(template_name, data, RequestContext(request, {}))
