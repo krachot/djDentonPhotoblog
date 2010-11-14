@@ -6,9 +6,13 @@
     {% block og %}{% endblock %}
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css" />
     
+    <!--[if IE]>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/html5-ie.js"></script>
+    <![endif]-->
+
     <link rel="alternate" title="Fiona Denton : Latest photos" type="application/atom+xml" href="{% url photoblog_latest_feed %}" />
 </head>
-<body>
+<body {% block body_attributes %}{% endblock %}>
     <div id="wrapper">
         <header role="banner">
             <h1><a href="{% url photoblog_home %}">Fiona Denton</a></h1>
@@ -16,7 +20,7 @@
             <nav role="navigation">
             <a href="{% url photoblog_home %}">Home</a>
             <a href="{% url photoblog_archives %}">Archives</a>
-            <a href="/">Contact</a>
+            <a href="{% url photoblog_contact %}">Contact</a>
             <a id="subscribe" href="{% url photoblog_latest_feed %}">Subscribe</a>
             </nav>
         </header>
@@ -26,11 +30,10 @@
         </section>
     </div>
     
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.4.min.js"></script>
     {% block extra_js %}{% endblock %}
     <!--[if IE]>
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/styles-ie.css" />
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/html5-ie.js"></script>
     <![endif]-->
 </body>
 </html>

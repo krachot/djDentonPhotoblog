@@ -1,21 +1,23 @@
 {% extends "layout/base.html" %}
-{% block title %}Fiona Denton - archives{% endblock %}
+{% block title %}Fiona Denton - Photoblog archives{% endblock %}
+{% block body_attributes %}id="archives"{% endblock %}
 
 {% block content %}
+    {% load truncate_filters %}
+    
+    <h1>Archives</h1>
     {% regroup archives by category as photo_by_category %}
-    <ul>
     {% for photos in photo_by_category %}
-        <li>{{ photos.grouper }}
-        <ul>
-            {% for photo in photos.list %}
-            <li>
-                <a href="{{ photo.get_absolute_url }}" title="{{ photo.title}}"><img src="{{ photo.file.url_200x200 }}" /></a>
-            </li>
-            {% endfor %}
-        </ul>
-        </li>
+    <h2>{{ photos.grouper }}</h2>
+    <div class="archive-month">
+        {% for photo in photos.list %}
+        <a href="{{ photo.get_absolute_url }}" title="{{ photo.title}}">
+            <img src="{{ photo.file.url_200x200 }}" width="200" height="200" />
+            <span class="archive_title">{{ photo.title|truncate_chars:60 }}</span>
+        </a>
+        {% endfor %}
+    </div>
     {% endfor %}
-    </ul>
 
 {% endblock %}
 

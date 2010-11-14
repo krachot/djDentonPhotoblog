@@ -11,7 +11,7 @@ URL_BLOG = settings.NDD
 
 def index(request, template_name='photoblog/index.html'):
     try:
-        photo = Photo.public_objects.order_by('-created_at')[0]
+        photo = Photo.public_objects.select_related().order_by('-created_at')[0]
     except IndexError:
         photo = None
     
@@ -20,7 +20,9 @@ def index(request, template_name='photoblog/index.html'):
             prev = photo.get_previous_by_created_at( is_published=1 )
         except Photo.DoesNotExist:
             prev = None
-        
+    else:
+        prev = None
+    
     data = {
         'photo': photo,
         'prev': prev,
@@ -60,3 +62,6 @@ def archives(request, template_name='photoblog/archives.html'):
         'archives': Photo.public_objects.select_related().order_by('category__name', 'created_at').all(),
     }
     return render_to_response(template_name, data, RequestContext(request, {}))
+
+def contact(request, template_name='photoblog/contact.html'):
+    return render_to_response(template_name, {}, RequestContext(request, {}))

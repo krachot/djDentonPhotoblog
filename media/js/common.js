@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
     var links = $('#nav');
     var photo = $('#photo img');
     if (links.length == 0) { return; }
@@ -30,4 +30,5 @@ $(window).load(function() {
     
     add_link(photo, 'next', next);
     add_link(photo, 'prev', prev);
+
 });

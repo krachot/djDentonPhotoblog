@@ -29,7 +29,7 @@ class PhotoAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     fieldsets = (
         ('Photo', {
-            'fields': ('category', 'title', 'file',)       
+            'fields': ('category', 'file', 'title',)
         }),
         ('Options avancées', {
             'classes': ('collapse',),

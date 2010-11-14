@@ -114,6 +114,15 @@ body {
   color: #fff;
 }
 
+h1, h2, h3 {
+  font-family: 'Lobster', Tahoma, sans-serif;
+}
+
+p {
+ font-size: 14px;
+ margin-bottom: 16px;
+}
+
 li {
   list-style: none;
 }
@@ -203,6 +212,7 @@ section #photo img {
   display:block;
   float:left;
   width:49.9%;
+  outline: none;
 }
 
 #photo.photo-nav a.next {
@@ -241,4 +251,68 @@ section #photo img {
 #nav li a {
   color: #fff;
   text-decoration: none;
+}
+
+/* Archive page */
+#archives section h1, #contact section h1 {
+    color:#EEEEEE;
+    font:lighter 30px 'Lobster';
+    margin:16px 0;
+    border-bottom:1px solid #444444;
+}
+
+#archives section h2 {
+    float:left;
+    font-size:1.1em;
+    font-weight:normal;
+    width:160px;
+}
+
+#archives .archive-month {
+    border-left:1px solid #444444;
+    margin:0 0 20px;
+    overflow:hidden;
+    padding:0 0 0 0;
+}
+
+#archives .archive-month a {
+    display: block;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    float: left;
+    margin:0 0 32px 36px;
+    text-decoration: none;
+}
+
+#archives a img {
+    border:1px solid #555555;
+    opacity:0.8;
+    padding:3px;
+}
+
+#archives .archive-month a .archive_title {
+    position: absolute;
+    left: 4px;
+    top: 168px;
+    display: block;
+    width: 180px;
+    height: 30px;
+    padding: 3px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(0,0,0,0.6);
+    font-family: 'Lobster', Tahoma, sans-serif;
+}
+
+#contact article {
+    display: block;
+    width: 55%;
+    float: left;
+}
+
+#contact #fiona_tof {
+    width: 39.9%;
+    float: left;
+    padding-left: 32px;
 }

@@ -1,0 +1,24 @@
+{% extends "layout/base.html" %}
+{% block title %}Fiona Denton - Contact{% endblock %}
+{% block body_attributes %}id="contact"{% endblock %}
+
+{% block content %}
+    <h1>A propos</h1>
+
+    <article role="bio">
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </article>
+
+    <p id="fiona_tof">
+        <img class="instant itiltlright icolorFFFCE9 ishadow40 historical" src="{{ ndd }}/media/photos/fiona.jpg" width="320" />
+    </p>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/instant.js"></script>
+{% endblock %}
