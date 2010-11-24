@@ -1,4 +1,6 @@
 {% extends "layout/base.html" %}
+{% load truncate_filters %}
+
 {% block title %}Fiona Denton - {{ photo.title }}{% endblock %}
 {% block og %}
     <meta property="og:title" content="Fiona Denton - {{ photo.title }}"/>
@@ -13,25 +15,41 @@
                 <img src="{{ photo.file.url_920x760 }}" />
             </div>
             
-            <h2>{{ photo.title }}</h2>
-            
-            <iframe src="http://www.facebook.com/widgets/like.php?href={{ ndd }}{{ photo.get_absolute_url }}"
-                scrolling="no" frameborder="0"
-                style="border:none; width:450px; height:80px"></iframe>
-
-            <ul id="nav">
-                {% if next %}
-                <li class="next"><a href="{{ next.get_absolute_url }}"
-                  title="Next picture ({{ next.created_at|date:"d M Y" }})">{{ next.title }}</a></li>
-                {% endif %}
-                {% if prev %}
-                <li class="previous"><a href="{{ prev.get_absolute_url }}"
-                  title="Previous picture ({{ prev.created_at|date:"d M Y" }})">{{ prev.title }}</a></li>
-                {% endif %}
-            </ul>
     {% endif %}
+{% endblock %}
+
+{% block footer %}
+  {% if photo %}
+    <h2>{{ photo.title }}</h2>
+
+    {% if photo.summary %}
+    <p class="summary">
+        {{ photo.summary|linebreaksbr }}
+    </p>
+    {% endif %}
+
+    <iframe src="http://www.facebook.com/widgets/like.php?href={{ ndd }}{{ photo.get_absolute_url }}"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:30px; margin: 16px 0 0 0;"></iframe>
+    <p>
+        Partagez cette photo :
+        <span class="st_twitter_hcount" displayText="Tweet"></span><span class="st_facebook_hcount" displayText="Share"></span>
+    </p>
+
+    <ul id="nav">
+        {% if next %}
+        <li class="next"><a href="{{ next.get_absolute_url }}"
+          title="Next picture ({{ next.created_at|date:"d M Y" }})">{{ next.title|truncate_chars:80 }} &raquo;</a></li>
+        {% endif %}
+        {% if prev %}
+        <li class="previous"><a href="{{ prev.get_absolute_url }}"
+          title="Previous picture ({{ prev.created_at|date:"d M Y" }})">&laquo; {{ prev.title|truncate_chars:80 }}</a></li>
+        {% endif %}
+    </ul>
+  {% endif %}
 {% endblock %}
 
 {% block extra_js %}
 <script type="text/javascript" src="{{ MEDIA_URL }}js/common.js"></script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'ed9e0ecf-8155-45c9-a7d6-fe750acd1e7f'});</script>
 {% endblock %}

@@ -4,6 +4,7 @@
     <title>{% block title %}{% endblock %}</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     {% block og %}{% endblock %}
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css" />
     
     <!--[if IE]>
@@ -29,6 +30,17 @@
             {% block content %}{% endblock %}
         </section>
     </div>
+
+    <footer>
+        <section>
+            {% block footer %}{% endblock %}
+
+            <div id="mentions">
+                <p>Fiona Denton&copy;2010, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/"><img alt="Contrat Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/2.0/fr/80x15.png" /></a><br />Toutes les photograpies sont sous licence <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons Paternité - Pas d'Utilisation Commerciale - Pas de Modification 2.0 France License</a>.</p>
+            </div>
+            
+        </section>
+    </footer>
     
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.4.min.js"></script>
     {% block extra_js %}{% endblock %}

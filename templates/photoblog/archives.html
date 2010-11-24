@@ -9,7 +9,7 @@
     {% regroup archives by category as photo_by_category %}
     {% for photos in photo_by_category %}
     <h2>{{ photos.grouper }}</h2>
-    <div class="archive-month">
+    <div class="archive-month clearfix">
         {% for photo in photos.list %}
         <a href="{{ photo.get_absolute_url }}" title="{{ photo.title}}">
             <img src="{{ photo.file.url_200x200 }}" width="200" height="200" />

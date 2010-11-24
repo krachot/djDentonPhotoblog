@@ -106,11 +106,15 @@ input, select {
     vertical-align:middle;
 }
 
+.clearfix:before, .clearfix:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
 /**
  * General
  */
 body {
-  background: #000 url(img/bg.png) left top repeat;
+  background: #EAEAE0;
   color: #fff;
 }
 
@@ -128,9 +132,7 @@ li {
 }
 
 #wrapper {
-  position: relative;
-  width: 920px;
-  margin: 0 auto;
+  background: #000 url(img/bg.png) left top repeat;
 }
 
 header, nav, footer, figure, section {
@@ -139,12 +141,14 @@ header, nav, footer, figure, section {
 
 header {
   position: relative;
+  width: 920px;
+  margin: 0 auto;
 }
 
 header h1 {
   display: inline-block;
-  font-family: "Lobster", "Lucida Grande", Tahoma, "Trebuchet MS", Arial, Helvetica, FreeSans, sans-serif;
-  font-size: 48px;
+  font-family:  'Reenie Beanie', arial, serif;
+  font-size: 56px;
   margin-top: 10px;
 }
 
@@ -183,8 +187,11 @@ header nav a#subscribe {
   background: transparent url(img/feed.png) 7.2em 5px no-repeat;
 }
 
-section {
+#wrapper section {
   position: relative;
+  width: 920px;
+  margin: 0 auto;
+  padding-bottom: 32px;
 }
 
 section #photo {
@@ -249,8 +256,10 @@ section #photo img {
 }
 
 #nav li a {
-  color: #fff;
+  color: #222;
+  font-family: 'Reenie Beanie', arial, serif;
   text-decoration: none;
+  font-size: 24px;
 }
 
 /* Archive page */
@@ -270,7 +279,7 @@ section #photo img {
 
 #archives .archive-month {
     border-left:1px solid #444444;
-    margin:0 0 20px;
+    margin:0;
     overflow:hidden;
     padding:0 0 0 0;
 }
@@ -315,4 +324,32 @@ section #photo img {
     width: 39.9%;
     float: left;
     padding-left: 32px;
+}
+
+footer {
+    background: #EAEAE0 url(img/content-bg.png) left top repeat-x;
+    width: 100%;
+    min-height: 100px;
+    color: #222;
+}
+
+footer a { color: #222; }
+
+footer section {
+    width: 920px;
+    padding: 32px 0 16px;
+    margin: 0 auto;
+}
+
+footer h2 {
+    font-family: 'Reenie Beanie', arial, serif;
+    color: #222;
+    font-size: 3em;
+}
+
+footer #mentions {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: solid 1px #666;
+    font-size: 10px;
 }
