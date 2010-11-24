@@ -4,12 +4,22 @@
     <title>{% block title %}{% endblock %}</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     {% block og %}{% endblock %}
+
+    <!--[if IE]>
+    <script type="text/javascript">
+            document.createElement("header");
+            document.createElement("footer");
+            document.createElement("section");
+            document.createElement("aside");
+            document.createElement("nav");
+            document.createElement("article");
+            document.createElement("figure");
+            document.createElement("figcaption");
+    </script>
+    <![endif]-->
+
     <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css" />
-    
-    <!--[if IE]>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/html5-ie.js"></script>
-    <![endif]-->
 
     <link rel="alternate" title="Fiona Denton : Latest photos" type="application/atom+xml" href="{% url photoblog_latest_feed %}" />
 </head>
