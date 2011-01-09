@@ -147,8 +147,9 @@ header {
 
 header h1 {
   display: inline-block;
-  font-family:  'Reenie Beanie', arial, serif;
+  font-family:  'Gruppo', arial, serif;
   font-size: 56px;
+  font-weight: bold;
   margin-top: 10px;
 }
 
@@ -191,7 +192,7 @@ header nav a#subscribe {
   position: relative;
   width: 920px;
   margin: 0 auto;
-  padding-bottom: 32px;
+  padding-bottom: 64px;
 }
 
 section #photo {
@@ -220,6 +221,8 @@ section #photo img {
   float:left;
   width:49.9%;
   outline: none;
+  text-decoration: none;
+  border: none;
 }
 
 #photo.photo-nav a.next {
@@ -326,30 +329,41 @@ section #photo img {
     padding-left: 32px;
 }
 
-footer {
+#footer {
     background: #EAEAE0 url(img/content-bg.png) left top repeat-x;
     width: 100%;
     min-height: 100px;
     color: #222;
+    font-family: verdana, sans-serif;
 }
+#footer .twocol { float: left; width: 49.9%; margin-bottom: 32px; }
+#footer #socialsharing p { font-size: 11px; }
+#footer a { color: #222; }
 
-footer a { color: #222; }
-
-footer section {
+#footer section {
     width: 920px;
     padding: 32px 0 16px;
     margin: 0 auto;
 }
 
-footer h2 {
+#footer h2 {
     font-family: 'Reenie Beanie', arial, serif;
     color: #222;
     font-size: 3em;
+    margin-bottom: 16px;
 }
 
-footer #mentions {
+#footer #mentions {
     margin-top: 16px;
     padding-top: 16px;
     border-top: solid 1px #666;
     font-size: 10px;
+}
+
+#footer #mentions p { font-size: 10px; line-height: 16px; }
+
+#footer #mentions .fb {
+    float: right;
+    padding-left: 50px;
+    width: 32px;
 }

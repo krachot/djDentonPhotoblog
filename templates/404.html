@@ -1,10 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "layout/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "404 Not Found" %}{% endblock title %}
+{% block content %}
+    <p><strong>{% trans "404 Not Found" %}</strong></p>
+{% endblock content %}

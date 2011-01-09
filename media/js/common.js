@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).load(function() {
     var links = $('#nav');
     var photo = $('#photo img');
     if (links.length == 0) { return; }

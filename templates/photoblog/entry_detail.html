@@ -1,10 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "layout/base.html" %}
+{% block title %}Fiona Bourdon - {{ object.title }}{% endblock title %}
+{% block content %}
+<div class="entry">
+    <h1>{{ object.title }}</h1>
+    <p class="entry-meta">
+        {{ object.publication_date|date:"d/m/Y" }}
+    </p>
+    <div class="entry-body">
+        {{ object.body|safe }}
+    </div>
+</div>
+{% endblock content %}

@@ -1,10 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "layout/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Latest entries" %}{% endblock title %}
+{% block body_attributes %}id="contact"{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<h1>{% trans "Dernières news" %}</h1>
+{% if latest %}
+    {% for entry in latest %}
+    <div class="entry">
+        <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
+        <p class="entry-meta">
+            {{ entry.publication_date|date:"d/m/Y" }}
+        </p>
+        <div class="entry-body">
+            {{ entry.body|safe }}
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p><strong>{% trans "No entry yet" %}.</strong></p>
+{% endif %}
+{% endblock content %}

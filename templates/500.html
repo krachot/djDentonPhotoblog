@@ -1,10 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "layout/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "error 500" %}{% endblock title %}
+{% block content %}
+    <p><strong>{% trans "Error 500" %}</strong></p>
+{% endblock content %}
 
-</body>
-</html>

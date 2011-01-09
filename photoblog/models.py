@@ -84,5 +84,56 @@ class Photo(models.Model):
         ordering = ['-created_at']
         verbose_name = _(u'Photo')
         verbose_name_plural = _(u'Photos')
+
+class EntryOnlineManager(models.Manager):
+    """
+    Manager that manages online ``Entry`` objects.
+    """
+
+    def get_query_set(self):
+        return super(EntryOnlineManager, self).get_query_set().filter(
+            status=self.model.STATUS_ONLINE)
+
+
+class Entry(models.Model):
+    """
+    Actu
+    """
+    STATUS_OFFLINE = 0
+    STATUS_ONLINE = 1
+    STATUS_DEFAULT = STATUS_OFFLINE
+    STATUS_CHOICES = (
+        (STATUS_OFFLINE, _('Offline')),
+        (STATUS_ONLINE, _('Online')),
+    )
+
+    title = models.CharField(_('title'), max_length=255)
+    slug = models.SlugField(_('slug'), max_length=255, unique_for_date='publication_date')
+    creation_date = models.DateTimeField(_('creation date'), auto_now_add=True)
+    modification_date = models.DateTimeField(_('modification date'), auto_now=True)
+    publication_date = models.DateTimeField(_('publication date'), default=datetime.now(), db_index=True)
+    status = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=STATUS_DEFAULT, db_index=True)
+    body = models.TextField(_('body'))
+
+    objects = models.Manager()
+    online_objects = EntryOnlineManager()
+
+    class Meta:
+        verbose_name = _('entry')
+        verbose_name_plural = _('entries')
+
+    def __unicode__(self):
+        return u'%s' % self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('blog_entry', (), {
+            'year': self.publication_date.strftime('%Y'),
+            'month': self.publication_date.strftime('%m'),
+            'day': self.publication_date.strftime('%d'),
+            'slug': self.slug,
+        })
+
+
     
     

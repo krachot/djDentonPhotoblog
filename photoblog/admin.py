@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 # Application
 from djDentonPhotoblog.photoblog.models import Category
 from djDentonPhotoblog.photoblog.models import Photo
+from djDentonPhotoblog.photoblog.models import Entry
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at')
@@ -44,3 +45,23 @@ class PhotoAdmin(admin.ModelAdmin):
     get_thumbnail_img_tag.admin_order_field = 'title'
     
 admin.site.register(Photo, PhotoAdmin)
+
+class EntryAdmin(admin.ModelAdmin):
+    """
+    Administration interface options of ``Entry`` model.
+    """
+    list_display = ('title', 'status')
+    search_fields = ('title', 'body')
+    date_hierarchy = 'publication_date'
+    fieldsets = (
+        (_('Headline'), {'fields': ('title', 'slug')}),
+        (_('Publication'), {'fields': ('publication_date', 'status')}),
+        (_('Body'), {'fields': ('body',)}),
+    )
+    save_on_top = True
+    radio_fields = {'status': admin.VERTICAL}
+    prepopulated_fields = {'slug': ('title',)}
+
+
+admin.site.register(Entry, EntryAdmin)
+

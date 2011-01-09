@@ -18,19 +18,20 @@
     </script>
     <![endif]-->
 
-    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css" />
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie|Gruppo&subset=latin' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}css/styles.css?v=1" />
 
-    <link rel="alternate" title="Fiona Denton : Latest photos" type="application/atom+xml" href="{% url photoblog_latest_feed %}" />
+    <link rel="alternate" title="Fiona Bourdon : Latest photos" type="application/atom+xml" href="{% url photoblog_latest_feed %}" />
 </head>
 <body {% block body_attributes %}{% endblock %}>
     <div id="wrapper">
         <header role="banner">
-            <h1><a href="{% url photoblog_home %}">Fiona Denton</a></h1>
+            <h1><a href="{% url photoblog_home %}">Fiona Bourdon</a></h1>
             
             <nav role="navigation">
             <a href="{% url photoblog_home %}">Home</a>
             <a href="{% url photoblog_archives %}">Archives</a>
+            <a href="{% url blog %}">News</a>
             <a href="{% url photoblog_contact %}">Contact</a>
             <a id="subscribe" href="{% url photoblog_latest_feed %}">Subscribe</a>
             </nav>
@@ -41,12 +42,18 @@
         </section>
     </div>
 
-    <footer>
-        <section>
+    <footer id="footer">
+        <section class="clearfix">
             {% block footer %}{% endblock %}
 
             <div id="mentions">
-                <p>Fiona Denton&copy;2010, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/"><img alt="Contrat Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/2.0/fr/80x15.png" /></a><br />Toutes les photograpies sont sous licence <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons Paternité - Pas d'Utilisation Commerciale - Pas de Modification 2.0 France License</a>.</p>
+                <div class="fb">
+                    <a href="http://www.facebook.com/pages/Fiona-B-Photographies/182084451820480">
+                        <img src="{{ ndd }}/site_media/photos/contact_facebook.png" alt="">
+                    </a>
+                </div>
+
+                <p>Fiona Bourdon&copy;2011, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/"><img alt="Contrat Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/2.0/fr/80x15.png" /></a><br />Toutes les photograpies sont sous licence <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons Paternité - Pas d'Utilisation Commerciale - Pas de Modification 2.0 France License</a>.</p>
             </div>
             
         </section>

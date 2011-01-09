@@ -1,12 +1,14 @@
 {% extends "layout/base.html" %}
 {% load truncate_filters %}
 
-{% block title %}Fiona Denton - portfolio{% endblock %}
+{% block title %}Fiona Bourdon - portfolio{% endblock %}
 {% block og %}
-    <meta property="og:title" content="Fiona Denton - portfolio"/>
+    <meta property="og:title" content="Fiona Bourdon - portfolio"/>
+    <meta property="og:site_name" content="Fiona Bourdon"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{ ndd }}"/>
     <meta property="og:image" content="{{ ndd }}{{ photo.file.url_200x200 }}"/>
+    <meta property="fb:admins" content="FionaXP329"/>
 {% endblock %}
 
 {% block content %}

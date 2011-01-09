@@ -1,12 +1,14 @@
 {% extends "layout/base.html" %}
 {% load truncate_filters %}
 
-{% block title %}Fiona Denton - {{ photo.title }}{% endblock %}
+{% block title %}Fiona Bourdon - {{ photo.title }}{% endblock %}
 {% block og %}
-    <meta property="og:title" content="Fiona Denton - {{ photo.title }}"/>
+    <meta property="og:site_name" content="Fiona Bourdon"/>
+    <meta property="og:title" content="Fiona Bourdon - {{ photo.title }}"/>
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="{{ ndd }}{{ photo.get_absolute_url }}"/>
     <meta property="og:image" content="{{ ndd }}{{ photo.file.url_200x200 }}"/>
+    <meta property="fb:admins" content="FionaXP329"/>
 {% endblock %}
 
 {% block content %}
@@ -20,6 +22,7 @@
 
 {% block footer %}
   {% if photo %}
+  <div class="twocol">
     <h2>{{ photo.title }}</h2>
 
     {% if photo.summary %}
@@ -27,7 +30,8 @@
         {{ photo.summary|linebreaksbr }}
     </p>
     {% endif %}
-
+  </div>
+  <div id="socialsharing" class="twocol">
     <iframe src="http://www.facebook.com/widgets/like.php?href={{ ndd }}{{ photo.get_absolute_url }}"
         scrolling="no" frameborder="0"
         style="border:none; width:450px; height:30px; margin: 16px 0 0 0;"></iframe>
@@ -35,7 +39,7 @@
         Partagez cette photo :
         <span class="st_twitter_hcount" displayText="Tweet"></span><span class="st_facebook_hcount" displayText="Share"></span>
     </p>
-
+  </div>
     <ul id="nav">
         {% if next %}
         <li class="next"><a href="{{ next.get_absolute_url }}"
