@@ -1,17 +1,14 @@
 {% extends "layout/base.html" %}
 {% load i18n %}
 {% block title %}{% trans "Latest entries" %}{% endblock title %}
-{% block body_attributes %}id="contact"{% endblock %}
+{% block body_attributes %}id="news"{% endblock %}
 
 {% block content %}
 <h1>{% trans "Dernières news" %}</h1>
 {% if latest %}
     {% for entry in latest %}
     <div class="entry">
-        <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
-        <p class="entry-meta">
-            {{ entry.publication_date|date:"d/m/Y" }}
-        </p>
+        <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a> <span class="entry-meta"> - Publié le {{ entry.publication_date|date:"d/m/Y" }}</span></h3>
         <div class="entry-body">
             {{ entry.body|safe }}
         </div>

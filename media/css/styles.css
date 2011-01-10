@@ -266,7 +266,7 @@ section #photo img {
 }
 
 /* Archive page */
-#archives section h1, #contact section h1 {
+#archives section h1, #contact section h1, #news section h1 {
     color:#EEEEEE;
     font:lighter 30px 'Lobster';
     margin:16px 0;
@@ -367,3 +367,11 @@ section #photo img {
     padding-left: 50px;
     width: 32px;
 }
+
+/* entry  */
+#news h3 { font-size: 14px; margin-bottom: 14px; display: inline-block; }
+#news h3 a { color: #fff; text-decoration: none; color:#EEEEEE; font:lighter 24px 'Lobster'; }
+#news h3 a:hover { text-decoration: underline; }
+#news .entry-body { margin-bottom: 10px; }
+#news .entry-meta { font-size: 10px; }
+#news .entry { margin-bottom: 16px; }
